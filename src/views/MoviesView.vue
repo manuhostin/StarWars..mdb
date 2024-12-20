@@ -1,6 +1,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import api from '@/plugins/axios';
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 
 const isLoading = ref(false);
 const genres = ref([]);
@@ -55,6 +58,10 @@ onMounted(async () => {
 
     await listStarWarsMovies();
 });
+
+function openMovie(movieId) {
+  router.push({ name: 'MovieDetails', params: { movieId } });
+};
 
 </script>
 
